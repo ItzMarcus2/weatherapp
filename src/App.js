@@ -3,7 +3,7 @@ import Titles from './components/Titles';
 import Form from './components/Form';
 import Weather from './components/Weather';
 
-const API_KEY = "3abbcc3e5db6af76f3f32b19497b78bb";
+import { getWeatherData } from './api';
 
 class App extends Component {
 
@@ -27,7 +27,7 @@ class App extends Component {
     const city = event.target.elements.city.value; // Grabbing the value of the <input> object with the attribute "name"
     const country = event.target.elements.country.value; // ^^
 
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
+    const api_call = await getWeatherData(city, country);
     const data = await api_call.json();
     console.log(data);
 
