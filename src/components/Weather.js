@@ -7,7 +7,13 @@ const Weather = (props) => {
         props.city && props.country && <p className="weather__key">Location: <span className="weather__value">{ props.city }, { props.country }</span></p>
       }
       {
-        props.temp && <p className="weather__key">Temperature: <span className="weather__value">{ props.temp }</span></p>
+        props.temp && <p className="weather__key">Temperature: <span className="weather__value">{ props.temp }°</span></p>
+      }
+      {
+        props.temp && <p className="weather__key">Max Temperature: <span className="weather__value">{ props.max_temp }°</span></p>
+      }
+      {
+        props.temp && <p className="weather__key">Min Temperature: <span className="weather__value">{ props.min_temp }°</span></p>
       }
       {
         props.humidity && <p className="weather__key">Humidity: <span className="weather__value">{ props.humidity }</span></p>

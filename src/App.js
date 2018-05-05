@@ -11,6 +11,8 @@ class App extends Component {
     super();
     this.state = {
       temp: undefined,
+      min_temp: undefined,
+      max_temp: undefined,
       city: undefined,
       country: undefined,
       humidity: undefined,
@@ -27,10 +29,13 @@ class App extends Component {
 
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
+    console.log(data);
 
-    if (city && country && data.message === false) { // if city and country returns true, then set the state values.
+    if (city && country) { // if city and country returns true, then set the state values.
       this.setState({
         temp: data.main.temp,
+        min_temp: data.main.temp_min,
+        max_temp: data.main.temp_max,
         city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity,
@@ -58,6 +63,8 @@ class App extends Component {
                   <Form getWeather={this.getWeather}/>
                   <Weather
                     temp={this.state.temp}
+                    min_temp={this.state.min_temp}
+                    max_temp={this.state.max_temp}
                     city={this.state.city}
                     country={this.state.country}
                     humidity={this.state.humidity}
