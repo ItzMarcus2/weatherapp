@@ -29,7 +29,6 @@ class App extends Component {
 
     const api_call = await getWeatherData(city, country);
     const data = await api_call.json();
-    console.log(data);
 
     if (city && country) { // if city and country returns true, then set the state values.
       this.setState({
